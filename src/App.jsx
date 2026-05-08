@@ -1,5 +1,3 @@
-//Dokumentasi Beneran
-
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -10,7 +8,6 @@ import {
   ClipboardCheck,
   Clock,
   FileCheck2,
-  Globe2,
   MapPin,
   Megaphone,
   Menu,
@@ -22,7 +19,7 @@ import {
   X,
 } from "lucide-react";
 
-export default function OprecSE2026() {
+export default function OprecMitraStatistik2026Tambahan() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(0);
 
@@ -37,7 +34,6 @@ export default function OprecSE2026() {
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date();
-
       setTimeLeft(getTimeLeft(recruitmentDate));
       setIsOpen(now >= recruitmentDate);
     }, 1000);
@@ -46,7 +42,7 @@ export default function OprecSE2026() {
   }, [recruitmentDate]);
 
   const navItems = [
-    { label: "Benefit", href: "#kenapa" },
+    { label: "Dokumen", href: "#dokumen" },
     { label: "Tahapan", href: "#tahapan" },
     { label: "Syarat", href: "#syarat" },
     { label: "Daftar", href: "#pendaftaran" },
@@ -54,24 +50,28 @@ export default function OprecSE2026() {
     { label: "FAQ", href: "#faq" },
   ];
 
-  const benefits = [
+  const requiredDocuments = [
     {
       no: "01",
-      icon: <BadgeCheck />,
-      title: "Pengalaman Berharga",
-      desc: "Terlibat langsung dalam kegiatan Sensus Ekonomi skala nasional.",
+      title: "Pas Foto",
+      desc: [
+        "Berpakaian rapi",
+        "Latar belakang berwarna polos",
+        "Wajah terlihat jelas",
+      ],
+      icon: <FileCheck2 />,
     },
     {
       no: "02",
-      icon: <Globe2 />,
-      title: "Kontribusi untuk Negara",
-      desc: "Berperan dalam menyediakan data penting untuk pembangunan Indonesia.",
+      title: "KTP dan Ijazah",
+      desc: ["Terlihat jelas", "Tidak terpotong"],
+      icon: <BadgeCheck />,
     },
     {
       no: "03",
-      icon: <FileCheck2 />,
-      title: "Mendapatkan Honor",
-      desc: "Mendapatkan kompensasi sesuai ketentuan.",
+      title: "Nomor Rekening",
+      desc: ["Terlihat jelas", "Tidak terpotong"],
+      icon: <ClipboardCheck />,
     },
   ];
 
@@ -170,40 +170,19 @@ export default function OprecSE2026() {
     "Melakukan aktivasi akun melalui tautan yang dikirimkan ke email.",
     "Melakukan login dan melengkapi data profil, yaitu mengunggah KTP, foto terbaru, dan ijazah pada aplikasi SOBAT.",
     "Melakukan verifikasi NIK pada aplikasi SOBAT.",
-    "Mendaftar pada kegiatan Rekrutmen Mitra BPS 2026, Pendaftaran Tambahan.",
+    "Mendaftar pada kegiatan Open Recruitment Mitra Statistik 2026 Tambahan.",
   ];
 
   const existingRegistrantSteps = [
     "Melakukan login dan melengkapi data profil, yaitu mengunggah KTP, foto terbaru, dan ijazah pada aplikasi SOBAT.",
     "Melakukan verifikasi NIK pada aplikasi SOBAT bagi yang belum.",
-    "Mendaftar pada kegiatan Rekrutmen Mitra BPS 2026, Pendaftaran Tambahan.",
-  ];
-
-  const recruitmentStats = [
-    {
-      label: "Kebutuhan Mitra",
-      value: "1.800",
-      desc: "Total target mitra yang dibutuhkan",
-      icon: <Users />,
-    },
-    {
-      label: "Sudah Mendaftar",
-      value: "873",
-      desc: "Jumlah pendaftar sementara",
-      icon: <ClipboardCheck />,
-    },
-    {
-      label: "Kuota Tersisa",
-      value: "377",
-      desc: "Sisa kebutuhan mitra",
-      icon: <BadgeCheck />,
-    },
+    "Mendaftar pada kegiatan Open Recruitment Mitra Statistik 2026 Tambahan.",
   ];
 
   const announcements = [
     {
       title: "Pengumuman Administrasi",
-      desc: "Informasi hasil seleksi administrasi calon mitra SE2026.",
+      desc: "Informasi hasil seleksi administrasi calon Mitra Statistik 2026 Tambahan.",
       status: "Coming Soon",
     },
     {
@@ -213,15 +192,15 @@ export default function OprecSE2026() {
     },
     {
       title: "Pengumuman Final",
-      desc: "Informasi final peserta yang dinyatakan diterima sebagai mitra.",
+      desc: "Informasi final peserta yang dinyatakan diterima sebagai Mitra Statistik 2026 Tambahan.",
       status: "Coming Soon",
     },
   ];
 
   const faqs = [
     {
-      q: "Apa itu SE2026?",
-      a: "SE2026 adalah Sensus Ekonomi 2026, yaitu kegiatan pendataan ekonomi berskala nasional untuk memperoleh gambaran kondisi usaha dan aktivitas ekonomi di Indonesia.",
+      q: "Apa itu Oprec Mitra Statistik 2026 Tambahan?",
+      a: "Oprec Mitra Statistik 2026 Tambahan adalah proses penerimaan calon mitra BPS untuk mendukung kegiatan statistik tahun 2026 sesuai kebutuhan wilayah kerja BPS Kota Jakarta Timur.",
     },
     {
       q: "Apakah pendaftaran dipungut biaya?",
@@ -233,7 +212,7 @@ export default function OprecSE2026() {
     },
     {
       q: "Apakah semua peserta wajib mengikuti pelatihan?",
-      a: "Ya. Seluruh mitra wajib mengikuti pelatihan hingga dinyatakan lulus sebagai syarat menjadi mitra Sensus Ekonomi 2026.",
+      a: "Ya. Seluruh mitra wajib mengikuti pelatihan hingga dinyatakan lulus sebagai syarat menjadi Mitra Statistik 2026 Tambahan.",
     },
     {
       q: "Di mana informasi resmi dapat dipantau?",
@@ -265,7 +244,7 @@ export default function OprecSE2026() {
                 BPS Kota Jakarta Timur
               </p>
               <p className="mt-1 text-xs font-semibold text-orange-600">
-                Recruitment Portal SE2026
+                Portal Oprec Mitra Statistik 2026
               </p>
             </div>
           </a>
@@ -333,18 +312,18 @@ export default function OprecSE2026() {
               transition={{ duration: 0.65 }}
             >
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-white/80 px-4 py-2 text-sm font-bold text-orange-700 shadow-sm backdrop-blur">
-                <Sparkles size={17} /> Open Recruitment Mitra
+                <Sparkles size={17} /> Open Recruitment Mitra Statistik
               </div>
 
               <h1 className="max-w-4xl text-5xl font-black leading-[0.95] tracking-[-0.05em] text-slate-950 sm:text-6xl lg:text-7xl">
-                Ayo Jadi bagian dari{" "}
+                Ayo Bergabung sebagai{" "}
                 <span className="bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 bg-clip-text text-transparent">
-                  Sensus Ekonomi 2026
+                  Mitra Statistik 2026 Tambahan
                 </span>
               </h1>
 
               <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-600">
-                Segera daftarkan dirimu dan ikut berkontribusi dalam Sensus Ekonomi 2026. Siapkan akun SOBAT BPS, dokumen, dan perangkat terbaikmu.
+                Segera daftarkan dirimu sebagai calon Mitra Statistik 2026 Tambahan. Siapkan akun SOBAT BPS, dokumen, dan perangkat terbaikmu.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -357,10 +336,10 @@ export default function OprecSE2026() {
                 </a>
 
                 <a
-                  href="#tahapan"
+                  href="#dokumen"
                   className="inline-flex items-center justify-center rounded-2xl border border-orange-200 bg-white/80 px-7 py-4 font-black text-slate-900 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:border-orange-300 hover:bg-white"
                 >
-                  Cek Tahapan
+                  Cek Dokumen
                 </a>
               </div>
 
@@ -430,7 +409,7 @@ export default function OprecSE2026() {
 
                       <div className="mt-6 rounded-3xl border border-white/30 bg-white/20 p-5 backdrop-blur">
                         <p className="text-sm font-semibold leading-7 text-white">
-                          Pendaftaran dibuka pada 8 Mei 2026 pukul 08.00 WIB. Pastikan data lengkap dan benar agar proses pendaftaran berjalan lancar.
+                          Pendaftaran Mitra Statistik 2026 Tambahan dibuka pada 8 Mei 2026 pukul 08.00 WIB. Pastikan data lengkap dan benar agar proses pendaftaran berjalan lancar.
                         </p>
                       </div>
                     </>
@@ -441,51 +420,18 @@ export default function OprecSE2026() {
           </div>
         </section>
 
-        {/* <section id="dashboard" className="px-5 pb-10 lg:px-8">
-          <div className="mx-auto max-w-7xl">
-            <motion.div
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="rounded-[2.5rem] border border-orange-100 bg-white/85 p-6 shadow-xl shadow-orange-900/5 backdrop-blur md:p-8"
-            >
-              <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-                <div>
-                  <p className="text-base font-black uppercase tracking-[0.25em] text-orange-600">
-                    Dashboard Rekrutmen
-                  </p>
-                  <h2 className="mt-3 text-3xl font-black tracking-[-0.04em] text-slate-950 sm:text-4xl">
-                    Ringkasan Pendaftaran Mitra
-                  </h2>
-                </div>
-
-                <div className="rounded-full bg-orange-50 px-4 py-2 text-sm font-black text-orange-700 ring-1 ring-orange-100">
-                  Update sementara
-                </div>
-              </div>
-
-              <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {recruitmentStats.map((item, index) => (
-                  <DashboardCard key={item.label} item={item} index={index} />
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section> */}
-
-        <section id="kenapa" className="px-5 py-16 lg:px-8">
+        <section id="dokumen" className="px-5 py-16 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <SectionTitle
-              eyebrow="Kenapa harus ikut?"
-              title="Kesempatan berkontribusi dalam pendataan ekonomi nasional"
-              desc="Tiga nilai utama yang diperoleh calon mitra saat bergabung dalam Sensus Ekonomi 2026."
+              eyebrow="Dokumen pendaftaran"
+              title="Dokumen yang perlu disiapkan"
+              desc="Siapkan dokumen berikut sebelum melakukan pendaftaran agar proses pengisian data berjalan lebih lancar."
               size="large"
             />
 
             <div className="mt-10 grid gap-5 md:grid-cols-3">
-              {benefits.map((item, index) => (
-                <BenefitCard key={item.no} item={item} index={index} />
+              {requiredDocuments.map((item, index) => (
+                <DocumentCard key={item.no} item={item} index={index} />
               ))}
             </div>
           </div>
@@ -495,7 +441,7 @@ export default function OprecSE2026() {
           <div className="mx-auto max-w-7xl rounded-[2.5rem] border border-orange-100 bg-white/75 p-6 shadow-xl shadow-orange-900/5 backdrop-blur md:p-10">
             <SectionTitle
               eyebrow="Tahapan rekrutmen"
-              title="Alur seleksi mitra SE2026"
+              title="Alur seleksi Mitra Statistik 2026 Tambahan"
               desc="Ikuti setiap tahap sesuai jadwal. Panitia akan melakukan verifikasi sampai pengumuman akhir."
               size="large"
             />
@@ -518,7 +464,7 @@ export default function OprecSE2026() {
               <SectionTitle
                 eyebrow="Syarat umum"
                 title="Ketentuan calon mitra"
-                desc="Pastikan seluruh syarat berikut sesuai dengan kondisi calon peserta sebelum mendaftar."
+                desc="Pastikan seluruh syarat berikut sesuai dengan kondisi Anda sebelum mendaftar."
               />
 
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -554,7 +500,7 @@ export default function OprecSE2026() {
               </div>
 
               <div className="mt-6 rounded-3xl bg-orange-50 p-5 text-sm font-semibold leading-7 text-slate-700 ring-1 ring-orange-100">
-                Seluruh mitra wajib mengikuti pelatihan hingga dinyatakan lulus sebagai syarat menjadi mitra Sensus Ekonomi 2026.
+                Seluruh mitra wajib mengikuti pelatihan hingga dinyatakan lulus sebagai syarat menjadi Mitra Statistik 2026 Tambahan.
               </div>
             </div>
           </div>
@@ -584,7 +530,7 @@ export default function OprecSE2026() {
                     Mulai pendaftaran melalui SOBAT BPS
                   </h3>
                   <p className="mt-3 max-w-2xl leading-8 text-orange-50">
-                    Buka SOBAT BPS dan pilih kegiatan Rekrutmen Mitra BPS 2026, Pendaftaran Tambahan.
+                    Buka SOBAT BPS dan pilih kegiatan Open Recruitment Mitra Statistik 2026 Tambahan.
                   </p>
                 </div>
 
@@ -607,7 +553,7 @@ export default function OprecSE2026() {
             <SectionTitle
               center
               eyebrow="Pengumuman"
-              title="Informasi hasil seleksi mitra SE2026"
+              title="Informasi hasil seleksi Mitra Statistik 2026 Tambahan"
               desc="Pantau halaman ini secara berkala untuk melihat pengumuman administrasi, seleksi akhir, dan pengumuman final."
             />
 
@@ -667,7 +613,7 @@ export default function OprecSE2026() {
                 BPS Kota Jakarta Timur
               </p>
               <p className="mt-2 max-w-xl text-sm font-semibold leading-7 text-slate-600">
-                Portal informasi Open Recruitment Mitra Petugas Sensus Ekonomi 2026 BPS Kota Jakarta Timur.
+                Portal informasi Open Recruitment Mitra Statistik 2026 Tambahan BPS Kota Jakarta Timur.
               </p>
             </div>
 
@@ -700,7 +646,7 @@ export default function OprecSE2026() {
 
           <div className="mt-8 border-t border-orange-100 pt-5 text-center text-xs font-semibold text-slate-500 md:flex md:items-center md:justify-between md:text-left">
             <p>© 2026 BPS Kota Jakarta Timur. All rights reserved.</p>
-            <p className="mt-2 md:mt-0">Sensus Ekonomi 2026</p>
+            <p className="mt-2 md:mt-0">Oprec Mitra Statistik 2026 Tambahan</p>
           </div>
         </div>
       </footer>
@@ -809,33 +755,41 @@ function MiniStat({ value, label }) {
   );
 }
 
-function DashboardCard({ item, index }) {
+function DocumentCard({ item, index }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.5, delay: index * 0.06, ease: "easeOut" }}
-      className="group rounded-[2rem] border border-orange-100 bg-gradient-to-br from-white to-orange-50 p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-900/10"
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
+      className="group relative overflow-hidden rounded-[2rem] border border-orange-100 bg-white/85 p-7 shadow-lg shadow-orange-900/5 backdrop-blur transition hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/15"
     >
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <p className="text-sm font-black uppercase tracking-wider text-orange-600">
-            {item.label}
-          </p>
-          <p className="mt-3 text-4xl font-black tracking-[-0.05em] text-slate-950">
-            {item.value}
-          </p>
+      <div className="absolute right-0 top-0 h-28 w-28 rounded-bl-[4rem] bg-orange-50 transition group-hover:bg-orange-100" />
+
+      <div className="relative flex items-start justify-between gap-4">
+        <div className="flex h-20 w-20 items-center justify-center rounded-full bg-orange-500 text-3xl font-black text-white shadow-xl shadow-orange-500/25">
+          {item.no}
         </div>
 
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-orange-500 text-white shadow-lg shadow-orange-500/20">
-          {React.cloneElement(item.icon, { size: 24 })}
+        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-100 text-orange-600 shadow-lg shadow-orange-500/10">
+          {React.cloneElement(item.icon, { size: 26 })}
         </div>
       </div>
 
-      <p className="mt-4 text-sm font-semibold leading-6 text-slate-600">
-        {item.desc}
-      </p>
+      <h3 className="relative mt-7 text-2xl font-black uppercase tracking-tight text-orange-600">
+        {item.title}
+      </h3>
+
+      <div className="relative mt-4 space-y-2">
+        {item.desc.map((text) => (
+          <div key={text} className="flex items-start gap-2">
+            <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-orange-500" />
+            <p className="text-base font-bold leading-7 text-slate-800">
+              {text}
+            </p>
+          </div>
+        ))}
+      </div>
     </motion.div>
   );
 }
@@ -888,42 +842,9 @@ function HeroCountdown({ label, value }) {
   );
 }
 
-function BenefitCard({ item, index }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.08 }}
-      className="group relative overflow-hidden rounded-[2rem] border border-orange-100 bg-white/80 p-7 shadow-lg shadow-orange-900/5 backdrop-blur transition hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/15"
-    >
-      <div className="absolute right-0 top-0 h-28 w-28 rounded-bl-[4rem] bg-orange-50 transition group-hover:bg-orange-100" />
-
-      <div className="relative flex items-start justify-between gap-4">
-        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-100 text-orange-600 shadow-lg shadow-orange-500/10">
-          {React.cloneElement(item.icon, { size: 26 })}
-        </div>
-
-        <span className="text-5xl font-black tracking-[-0.07em] text-orange-300/70">
-          {item.no}
-        </span>
-      </div>
-
-      <h3 className="relative mt-7 text-xl font-black uppercase tracking-tight text-slate-950">
-        {item.title}
-      </h3>
-
-      <p className="relative mt-3 text-base font-semibold leading-7 text-slate-600">
-        {item.desc}
-      </p>
-    </motion.div>
-  );
-}
-
 function StageCard({ item, status }) {
   const isActive = status === "active";
   const isDone = status === "done";
-  const isUpcoming = status === "upcoming";
 
   const statusLabel = isActive
     ? "Sedang Berlangsung"
