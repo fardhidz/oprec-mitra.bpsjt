@@ -79,42 +79,42 @@ export default function OprecSE2026() {
     {
       no: "01",
       title: "Registrasi",
-      date: "8 sampai 11 Mei 2026",
+      date: "8 - 11 Mei 2026",
       desc: "Isi formulir pendaftaran secara online melalui link yang tersedia.",
       icon: <ClipboardCheck />,
     },
     {
       no: "02",
       title: "Seleksi Administrasi",
-      date: "8 sampai 12 Mei 2026",
+      date: "8 - 12 Mei 2026",
       desc: "Verifikasi kelengkapan dan kesesuaian dokumen peserta.",
       icon: <Users />,
     },
     {
       no: "03",
       title: "Tes Kompetensi",
-      date: "13 sampai 18 Mei 2026",
+      date: "13 - 18 Mei 2026",
       desc: "Ujian untuk mengukur kemampuan dasar dan pemahaman peserta.",
       icon: <FileCheck2 />,
     },
     {
       no: "04",
       title: "Seleksi Akhir",
-      date: "15 sampai 19 Mei 2026",
+      date: "15 - 19 Mei 2026",
       desc: "Penentuan kelulusan berdasarkan hasil tes dan kriteria lainnya.",
       icon: <BadgeCheck />,
     },
     {
       no: "05",
       title: "Submit Pakta Integritas",
-      date: "20 sampai 22 Mei 2026",
+      date: "20 - 22 Mei 2026",
       desc: "Peserta yang lulus wajib menyetujui komitmen kerja dan integritas.",
       icon: <ShieldCheck />,
     },
     {
       no: "06",
       title: "Pengumuman",
-      date: "22 sampai 25 Mei 2026",
+      date: "23 - 25 Mei 2026",
       desc: "Pengumuman melalui media sosial dan website resmi BPS Kota Jakarta Timur.",
       icon: <Megaphone />,
     },
@@ -502,7 +502,11 @@ export default function OprecSE2026() {
 
             <div className="mt-12 grid gap-5 lg:grid-cols-2">
               {stages.map((item) => (
-                <StageCard key={item.no} item={item} />
+                <StageCard
+                  key={item.no}
+                  item={item}
+                  status={getStageStatus(item.date)}
+                />
               ))}
             </div>
           </div>
@@ -725,6 +729,44 @@ function getTimeLeft(targetDate) {
   };
 }
 
+function getStageStatus(dateText) {
+  const today = new Date();
+
+  const monthMap = {
+    Januari: 0,
+    Februari: 1,
+    Maret: 2,
+    April: 3,
+    Mei: 4,
+    Juni: 5,
+    Juli: 6,
+    Agustus: 7,
+    September: 8,
+    Oktober: 9,
+    November: 10,
+    Desember: 11,
+  };
+
+  const match = dateText.match(/(\d+)\s*-\s*(\d+)\s+(\w+)\s+(\d+)/);
+
+  if (!match) return "upcoming";
+
+  const startDay = Number(match[1]);
+  const endDay = Number(match[2]);
+  const month = monthMap[match[3]];
+  const year = Number(match[4]);
+
+  if (month === undefined) return "upcoming";
+
+  const startDate = new Date(year, month, startDay, 0, 0, 0);
+  const endDate = new Date(year, month, endDay, 23, 59, 59);
+
+  if (today < startDate) return "upcoming";
+  if (today > endDate) return "done";
+
+  return "active";
+}
+
 function SectionTitle({ eyebrow, title, desc, center = false, size = "default" }) {
   const titleSize =
     size === "large"
@@ -878,34 +920,108 @@ function BenefitCard({ item, index }) {
   );
 }
 
-function StageCard({ item }) {
+function StageCard({ item, status }) {
+  const isActive = status === "active";
+  const isDone = status === "done";
+  const isUpcoming = status === "upcoming";
+
+  const statusLabel = isActive
+    ? "Sedang Berlangsung"
+    : isDone
+      ? "Sudah Selesai"
+      : "Belum Mulai";
+
+  const statusClass = isActive
+    ? "bg-orange-500 text-white shadow-orange-500/20"
+    : isDone
+      ? "bg-emerald-100 text-emerald-700 ring-1 ring-emerald-200"
+      : "bg-slate-200 text-slate-500 ring-1 ring-slate-300";
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.55, ease: "easeOut" }}
-      className="group relative overflow-hidden rounded-[2rem] border border-orange-100 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-900/10"
+      className={`group relative overflow-hidden rounded-[2rem] border p-5 shadow-sm transition hover:-translate-y-1
+        ${
+          isActive
+            ? "border-orange-300 bg-white shadow-xl shadow-orange-500/20"
+            : isDone
+              ? "border-emerald-100 bg-white/70 opacity-75 shadow-emerald-900/5"
+              : "border-slate-200 bg-slate-100 opacity-45 grayscale"
+        }
+      `}
     >
+      <div
+        className={`mb-4 inline-flex rounded-full px-4 py-1 text-xs font-black uppercase tracking-wider shadow-lg ${statusClass}`}
+      >
+        {statusLabel}
+      </div>
+
       <div className="flex gap-5">
-        <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-orange-500 text-2xl font-black text-white shadow-lg shadow-orange-500/20">
-          {item.no}
+        <div
+          className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl text-2xl font-black shadow-lg
+            ${
+              isActive
+                ? "bg-orange-500 text-white shadow-orange-500/20"
+                : isDone
+                  ? "bg-emerald-500 text-white shadow-emerald-500/20"
+                  : "bg-slate-300 text-slate-500 shadow-slate-300/20"
+            }
+          `}
+        >
+          {isDone ? <CheckCircle2 size={28} /> : item.no}
         </div>
 
         <div className="min-w-0">
-          <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-orange-50 px-3 py-1 text-xs font-black uppercase tracking-wider text-orange-700">
+          <div
+            className={`mb-3 inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-black uppercase tracking-wider
+              ${
+                isActive
+                  ? "bg-orange-50 text-orange-700"
+                  : isDone
+                    ? "bg-emerald-50 text-emerald-700"
+                    : "bg-slate-200 text-slate-500"
+              }
+            `}
+          >
             {React.cloneElement(item.icon, { size: 15 })} Tahap {item.no}
           </div>
 
-          <h3 className="text-2xl font-black tracking-tight text-slate-950">
+          <h3
+            className={`text-2xl font-black tracking-tight ${
+              isActive
+                ? "text-slate-950"
+                : isDone
+                  ? "text-slate-700"
+                  : "text-slate-500"
+            }`}
+          >
             {item.title}
           </h3>
 
-          <p className="mt-1 text-base font-black text-orange-600">
+          <p
+            className={`mt-1 text-base font-black ${
+              isActive
+                ? "text-orange-600"
+                : isDone
+                  ? "text-emerald-600"
+                  : "text-slate-400"
+            }`}
+          >
             {item.date}
           </p>
 
-          <p className="mt-2 text-sm leading-7 text-slate-600">
+          <p
+            className={`mt-2 text-sm leading-7 ${
+              isActive
+                ? "text-slate-600"
+                : isDone
+                  ? "text-slate-500"
+                  : "text-slate-400"
+            }`}
+          >
             {item.desc}
           </p>
         </div>
